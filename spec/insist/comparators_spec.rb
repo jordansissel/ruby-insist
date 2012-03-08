@@ -12,7 +12,7 @@ describe Insist::Comparators do
     end
 
     it "should fail if the #value is not equal" do
-      insist { subject == 0 }.raises(Insist::Failure)
+      insist { subject == 0 }.fails
     end
   end
 
@@ -22,21 +22,61 @@ describe Insist::Comparators do
       subject <= larger
     end
 
+    it "should be OK if the #value is equal" do
+      subject >= subject.value
+    end
+
     it "should fail if the #value is greater" do
       smaller = subject.value - 1
-      insist { subject <= smaller }.raises(Insist::Failure)
+      insist { subject <= smaller }.fails
     end
   end
 
   describe "#>=" do
-    it "should be OK if the #value is greater than or equal" do
+    it "should be OK if the #value is greater than" do
       smaller = subject.value - 1
       subject >= smaller
     end
 
+    it "should be OK if the #value is equal" do
+      subject >= subject.value
+    end
+
     it "should fail if the #value is lesser" do
       larger = subject.value + 1
-      insist { subject >= larger }.raises(Insist::Failure)
+      insist { subject >= larger }.fails
+    end
+  end
+
+  describe "#<" do
+    it "should be OK if the #value is less than" do
+      larger = subject.value + 1
+      subject < larger
+    end
+
+    it "should fail if the #value is equal" do
+      insist { subject < subject.value }.fails
+    end
+
+    it "should fail if the #value is greater" do
+      smaller = subject.value - 1
+      insist { subject < smaller }.fails
+    end
+  end
+
+  describe "#>" do
+    it "should be OK if the #value is greater than" do
+      smaller = subject.value - 1
+      subject > smaller
+    end
+
+    it "should fail if the #value is equal" do
+      insist { subject > subject.value }.fails
+    end
+
+    it "should fail if the #value is lesser" do
+      larger = subject.value + 1
+      insist { subject > larger }.fails
     end
   end
 end

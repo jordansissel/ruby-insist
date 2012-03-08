@@ -10,7 +10,7 @@ describe Insist::Nil do
     it "should fail if the #value is not nil" do
       insist do
         insist { "not nil" }.nil?
-      end.raises(Insist::Failure)
+      end.fails
     end
   end
 end
