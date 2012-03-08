@@ -19,3 +19,38 @@ kind of lazy-evaluation wrapping:
     insist { code }.raises(exception_class)
 
 Reads well, I think.
+
+## Most minimal assertions possible
+
+Using rspec's 'subject' stuff, you can write tests that are perhaps even more minimal while still being clear.
+
+Here's an example test that fails. The subject is an 'insist' object, so you
+can just do the usual '==' and other methods on it:
+
+    describe "thing" do
+      subject { insist { "whoa!" } }
+
+      it "should be, like, awesome!"
+        subject == "awesome!"
+      end
+    end
+
+Running it:
+
+    Failures:
+
+      1) thing should be, like, awesome!
+         Failure/Error: subject == "awesome!"
+         Insist::Failure:
+           Expected "awesome!", but got "whoa!"
+         # ./lib/insist/assert.rb:8:in `assert'
+         # ./lib/insist/comparators.rb:12:in `=='
+         # ./test.rb:5:in `block (2 levels) in <top (required)>'
+
+    Finished in 0.00208 seconds
+    1 example, 1 failure
+
+    Failed examples:
+
+    rspec ./test.rb:4 # thing should be, like, awesome!
+
