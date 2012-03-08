@@ -11,4 +11,4 @@ module Insist::Raises
     assert(false, 
            "Expected exception '#{exception_class}' but none was raised")
   end # def raises
-end
+end # module Insist::Raises
