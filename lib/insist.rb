@@ -2,6 +2,7 @@ require "insist/namespace"
 
 require "insist/assert"
 require "insist/comparators"
+require "insist/enumerables"
 require "insist/raises"
 require "insist/failure"
 require "insist/nil"
@@ -21,6 +22,7 @@ class Insist
   class Failure < StandardError; end
 
   include Insist::Comparators
+  include Insist::Enumerables
   include Insist::Nil
   include Insist::Assert
   include Insist::Raises
