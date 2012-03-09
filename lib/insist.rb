@@ -3,9 +3,10 @@ require "insist/namespace"
 require "insist/assert"
 require "insist/comparators"
 require "insist/enumerables"
-require "insist/raises"
 require "insist/failure"
 require "insist/nil"
+require "insist/predicates"
+require "insist/raises"
 
 # Insist on correctness.
 #
@@ -26,6 +27,7 @@ class Insist
   include Insist::Nil
   include Insist::Assert
   include Insist::Raises
+  include Insist::Predicates
 
   # Create a new insist with a block.
   #
