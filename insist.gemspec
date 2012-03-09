@@ -2,7 +2,7 @@ Gem::Specification.new do |spec|
   files = %x{git ls-files}.split("\n")
 
   spec.name = "insist"
-  spec.version = "0.0.1"
+  spec.version = "0.0.2"
   spec.summary = "insist"
   spec.description = "insist"
   spec.license = "none chosen yet"
