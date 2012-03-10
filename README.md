@@ -27,6 +27,7 @@ Using rspec's 'subject' stuff, you can write tests that are perhaps even more mi
 Here's an example test that fails. The subject is an 'insist' object, so you
 can just do the usual '==' and other methods on it:
 
+    # spec/example_spec.rb
     describe "thing" do
       subject { insist { "whoa!" } }
 
