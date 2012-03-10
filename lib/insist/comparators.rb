@@ -42,4 +42,16 @@ module Insist::Comparators
     assert(value != expected,
            "Expected #{value.inspect} != #{expected.inspect}")
   end # def !=
+
+  # value =~ pattern
+  def =~(pattern)
+    assert(value =~ pattern,
+           "Expected #{value.inspect} =~ #{pattern.inspect}")
+  end # def =~
+
+  # value !~ pattern
+  def !~(pattern)
+    assert(value !~ pattern,
+           "Expected #{value.inspect} !~ #{pattern.inspect}")
+  end # def !~
 end # module Insist::Comparators

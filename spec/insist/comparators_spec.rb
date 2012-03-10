@@ -79,4 +79,32 @@ describe Insist::Comparators do
       insist { subject > larger }.fails
     end
   end
+
+  describe "#=~" do
+    subject do
+      Insist.new { "hello" }
+    end
+
+    it "should be OK if the #value matches the given pattern" do
+      subject =~ /hello/
+    end
+
+    it "should fail if the #value does not match the pattern" do
+      insist { subject =~ /world/ }.fails
+    end
+  end
+
+  describe "#!~" do
+    subject do
+      Insist.new { "hello" }
+    end
+
+    it "should be OK if the #value does not match the pattern" do
+      subject !~ /world/
+    end
+
+    it "should fail if the #value matches the given pattern" do
+      insist { subject !~ /hello/ }.fails
+    end
+  end
 end
