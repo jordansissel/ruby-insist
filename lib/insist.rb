@@ -40,18 +40,22 @@ class Insist
   #   insist { value }
   def initialize(&block)
     @callback = block
-  end
+  end # def initialize
 
   def value
     # TODO(sissel): make caching the value optional
     @value ||= @callback.call
     return @value
-  end
+  end # def value
 end # class Insist
 
 module Kernel
   # A shortcut to 'Insist.new'
+  #
+  # Example:
+  #
+  #     insist { "hello world" } != "fizzle"
   def insist(&block)
     return Insist.new(&block)
-  end
-end
+  end # def insist
+end # module Kernel
