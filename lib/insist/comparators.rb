@@ -6,6 +6,7 @@
 #     insist { "foo" } == "foo"
 module Insist::Comparators
   include Insist::Assert
+  require "insist/comparators19" if RUBY_VERSION >= "1.9.2"
 
   # value == expected
   def ==(expected)
@@ -37,21 +38,4 @@ module Insist::Comparators
            "Expected #{value.inspect} < #{expected.inspect}")
   end # def <
  
-  # value != expected
-  def !=(expected)
-    assert(value != expected,
-           "Expected #{value.inspect} != #{expected.inspect}")
-  end # def !=
-
-  # value =~ pattern
-  def =~(pattern)
-    assert(value =~ pattern,
-           "Expected #{value.inspect} =~ #{pattern.inspect}")
-  end # def =~
-
-  # value !~ pattern
-  def !~(pattern)
-    assert(value !~ pattern,
-           "Expected #{value.inspect} !~ #{pattern.inspect}")
-  end # def !~
 end # module Insist::Comparators

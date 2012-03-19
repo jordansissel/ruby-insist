@@ -80,7 +80,7 @@ describe Insist::Comparators do
     end
   end
 
-  describe "#=~" do
+  describe "#=~", :if => (RUBY_VERSION >= "1.9.2") do
     subject do
       Insist.new { "hello" }
     end
@@ -94,7 +94,7 @@ describe Insist::Comparators do
     end
   end
 
-  describe "#!~" do
+  describe "#!~", :if => (RUBY_VERSION >= "1.9.2") do
     subject do
       Insist.new { "hello" }
     end
