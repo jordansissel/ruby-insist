@@ -31,7 +31,7 @@ can just do the usual '==' and other methods on it:
     describe "thing" do
       subject { insist { "whoa!" } }
 
-      it "should be, like, awesome!"
+      it "should be, like, awesome!" do
         subject == "awesome!"
       end
     end
