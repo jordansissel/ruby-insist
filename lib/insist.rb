@@ -49,6 +49,13 @@ class Insist
   end # def value
 end # class Insist
 
+# Like Insist, but rejects (fails) on truthy values instead falsey ones.
+class Reject < Insist
+  def assert(truthy, message)
+    raise Insist::Failure.new(message) if truthy
+  end # def assert
+end # class Reject
+
 module Kernel
   # A shortcut to 'Insist.new'
   #
@@ -58,4 +65,17 @@ module Kernel
   def insist(&block)
     return Insist.new(&block)
   end # def insist
+
+  # A shortcut to 'Reject.new'
+  #
+  # Example:
+  #
+  #     # This will fail (raises Insist::Failure)
+  #     reject { [1,2,3,4] }.include?(3)
+  #
+  #     # This will succeed
+  #     reject { [1,2,3,4] }.include?(4)
+  def reject(&block)
+    return Reject.new(&block)
+  end # def reject
 end # module Kernel
