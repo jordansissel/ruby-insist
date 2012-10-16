@@ -7,7 +7,7 @@ module Insist::Predicates
 
   def respond_to?(method)
     assert(value.respond_to?(method),
-           "#{value} does not respond to the '#{method}' method")
+           "#{value.class} does not respond to the '#{method}' method")
   end # def respond_to?
 
   # Pass through any 'foo?' style method calls to the 'value' 
@@ -20,8 +20,8 @@ module Insist::Predicates
 
       # call the method, like .empty?, result must be truthy.
       result = value.send(m, *args)
-      assert(result, "#{value.inspect}##{m} expected to return a truthy " \
-             "value, but returned #{value.inspect}")
+      assert(result, "#{value.class}{#{value.inspect}}##{m} expected to return a truthy " \
+             "value, but returned #{result}")
       return result
     else
       return super(m, *args)
