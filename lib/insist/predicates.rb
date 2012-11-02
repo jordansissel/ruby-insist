@@ -20,8 +20,9 @@ module Insist::Predicates
 
       # call the method, like .empty?, result must be truthy.
       result = value.send(m, *args)
-      assert(result, "#{value.class}{#{value.inspect}}##{m} expected to return a truthy " \
-             "value, but returned #{result}")
+      assert(result, 
+             "#{value.class}{#{value.inspect}}##{m}(#{args.join(",")}) " \
+             "expected to return a truthy value, but returned #{result}")
       return result
     else
       return super(m, *args)
