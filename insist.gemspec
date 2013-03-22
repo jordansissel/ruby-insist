@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.version = "0.0.8"
   spec.summary = "A simple block-driven assertion library for both testing and for production code"
   spec.description = spec.summary
-  spec.license = "none chosen yet"
+  spec.license = "Apache 2"
 
   # Note: You should set the version explicitly.
   #spec.add_dependency "cabin", ">0" # for logging. apache 2 license
