@@ -5,10 +5,20 @@ module Insist::Predicates
   include Insist::Assert
   PREDICATE_METHOD_RE = /\?$/
 
+  # Fails if the value does not respond to a method.
+  # 
+  # insist { "hurray" }.respond_to?(:size)
   def respond_to?(method)
     assert(value.respond_to?(method),
            "#{value.class} does not respond to the '#{method}' method")
   end # def respond_to?
+
+  # Fails if the value.is_a?(klass) returns false.
+  # 
+  # insist { "hurray" }.is_a?(Number)
+  def is_a?(klass)
+    assert(value.is_a?(klass), "#{value.class} is not a #{klass}")
+  end
 
   # Pass through any 'foo?' style method calls to the 'value' 
   # and fail if the the return is false.

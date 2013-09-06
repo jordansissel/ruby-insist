@@ -5,6 +5,18 @@ require "insist/predicates"
 # The predicates feature will delegateany predicate method calls (ones ending
 # in "?") to the block value and fail if the return is false.
 describe Insist::Predicates do
+  describe "#is_a?" do
+    it "should succeed if value#is_a? returns true" do
+      insist { "some string" }.is_a?(Object)
+      insist { "some string" }.is_a?(String)
+    end
+    it "should fail if value#is_a? returns false" do
+      reject { "some string" }.is_a?(Numeric)
+      reject { "some string" }.is_a?(Fixnum)
+      reject { "some string" }.is_a?(File)
+    end
+  end
+
   describe "#respond_to?" do
     subject do
       insist { [1, 2, 3] }
